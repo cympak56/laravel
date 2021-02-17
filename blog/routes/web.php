@@ -13,12 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin/products','Admin\ProductsController@index');
-Route::get('/admin/products/edit/{id}','Admin\ProductsController@edit')->name('product.edit');
+Route::get('/', 'HomeController@index')->name('home');
+Route::resource('/admin/products','Admin\ProductsController');
+Route::resource('/admin/categories','Admin\CategoriesController');
+//Route::get('/admin/products','Admin\ProductsController@index');
+//Route::get('/admin/products/edit/{id}','Admin\ProductsController@edit')->name('product.edit');

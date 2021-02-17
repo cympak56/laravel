@@ -8,7 +8,7 @@
                     <h2>Edit Product</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('categories.index') }}"> Back</a>
                 </div>
             </div>
         </div>
@@ -25,33 +25,15 @@
         @endif
 
 
-        <form action="{{ route('products.update',$product->id) }}" method="POST">
+        <form action="{{ route('categories.update',$category->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Title:</strong>
-                        <input type="text" name="title" value="{{ $product->title }}" class="form-control"
+                        <input type="text" name="title" value="{{ $category->title }}" class="form-control"
                                placeholder="Name">
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-4">
-                    <div class="form-group">
-                        <strong>Price:</strong>
-                        <input type="text" name="price" class="form-control" placeholder="Price">
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-4">
-                    <div class="form-group">
-                        <strong>Category:</strong>
-                        <select name="category_id" class="form-control">
-                            @foreach($categories as $category)
-                                <option @if($category->id == $product->category_id) selected @endif value="{{ $category->id }}">{{ $category->title }}</option>
-                            @endforeach
-                        </select>
                     </div>
                 </div>
 
@@ -59,7 +41,7 @@
                     <div class="form-group">
                         <strong>Description:</strong>
                         <textarea class="form-control" style="height:150px"
-                                  name="description">{{ $product->description }}</textarea>
+                                  name="description">{{ $category->description }}</textarea>
                     </div>
                 </div>
 

@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div style="float:right">
-                            <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                            <a class="btn btn-success" href="{{ route('categories.create') }}"> Create New Category</a>
                         </div>
                     </div>
                 </div>
@@ -31,14 +31,14 @@
                 <th width="280px">Action</th>
             </tr>
 
-            @foreach ($products as $product)
+            @foreach ($categories as $category)
                 <tr>
-                    <td>{{ $product->id }}</td>
-                    <td>{{ $product->title }}</td>
-                    <td>{{ $product->description }}</td>
+                    <td>{{ $category->id }}</td>
+                    <td>{{ $category->title }}</td>
+                    <td>{{ $category->description }}</td>
                     <td>
-                        <form action="{{ route('products.destroy', $product->id) }}" method="POST">
-                            <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                            <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}">Edit</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -48,6 +48,6 @@
             @endforeach
         </table>
 
-        {!! $products->links() !!}
+        {!! $categories->links() !!}
     </div>
 @endsection
