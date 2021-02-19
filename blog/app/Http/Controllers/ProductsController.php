@@ -16,4 +16,59 @@ class ProductsController extends Controller
             'category' => Category::find($id)
         ]);
     }
+	
+	public function view(int $id)
+    {
+        $product = Product::query()->with('category')->find($id);
+		
+        return view('product', compact('product'));
+    } 
+	
+	public function add($id)
+    {
+        $product = Product::find($id);
+
+        if(!$product) {
+            abort(404);
+        }
+
+        $cart = session()->get('cart');
+		
+        if(!$cart) {
+
+            $cart = [
+				$id => [
+					"id" => $product->id,
+					"title" => $product->title,
+					"price" => $product->price,
+					"image" => $product->image,
+					"date" => date("d.m.Y")
+				]
+            ];
+
+            session()->put('cart', $cart);
+
+            return redirect()->back();
+        }
+
+        if(isset($cart[$id])) {
+
+            session()->put('cart', $cart);
+
+            return redirect()->back();
+
+        }
+
+        $cart[$id] = [
+			"id" => $product->id,
+            "title" => $product->title,
+            "price" => $product->price,
+            "image" => $product->image,
+			"date" => date("d.m.Y")
+        ];
+
+        session()->put('cart', $cart);
+
+        return redirect()->back();
+    }
 }
