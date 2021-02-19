@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderShipped;
 use App\Order;
 use App\Good;
+use App\Setting;
 
 class CartController extends Controller
 {
@@ -32,6 +35,9 @@ class CartController extends Controller
 			$good->save();
 		}
 		
+		$setting = Setting::find(1);
+		
+		Mail::to($setting->email)->send(new OrderShipped($order));
 		session()->put('cart', null);
 
         return view('complete');

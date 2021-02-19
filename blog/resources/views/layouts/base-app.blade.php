@@ -29,6 +29,7 @@
                 <a class="navbar-brand" href="{{ route('products.index') }}">Products</a>
                 <a class="navbar-brand" href="{{ route('categories.index') }}"> Categories</a>
 				<a class="navbar-brand" href="{{ route('orders.index') }}"> Orders</a>
+				<a class="navbar-brand" href="{{ route('settings.edit', 1) }}">Settings</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -26,4 +26,5 @@ Route::group(['middleware' => \App\Http\Middleware\AdminMiddleware::class], func
 	Route::resource('/admin/products','Admin\ProductsController');
 	Route::resource('/admin/categories','Admin\CategoriesController');
 	Route::resource('/admin/orders','Admin\OrdersController');
+	Route::resource('/admin/settings','Admin\SettingsController');
 });
